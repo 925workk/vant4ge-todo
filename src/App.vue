@@ -1,23 +1,23 @@
 <template>
   <div id="app">
-    <top-header></top-header>
+    <!-- <top-header></top-header>
     <div id="nav">
       <router-link to="/login">Login</router-link>|
       <router-link to="/todoapp">TodoApp</router-link>|
       <router-link to="/register">Register</router-link>
-    </div>
+    </div> -->
     <router-view/>
   </div>
 </template>
 
 
 <script>
-import TopHeader from "./components/Top-Header";
+// import TopHeader from "./components/Top-Header";
 
 export default {
-  components:{
-    'top-header': TopHeader
-  }
+  // components:{
+  //   'top-header': TopHeader
+  // }
 }
 </script>
 
