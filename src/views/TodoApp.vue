@@ -19,52 +19,64 @@
             <label for="Home Repair">Home Repair</label>
             <br />
             <button @click="addTodo()">Add Task</button>
+        </div>
+        <div>
             <ul>
-            <li v-for="tasks in tasks" :key="tasks.id">
-                <p>{{todo.text}}</p>
-            </li>
+                <li v-for="item in tasksCollection" :key="item.key">
+                    <p>{{item}}</p>
+                    <button>Remove</button>
+                    <button>Edit</button>
+                </li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
-
 import {db} from '../main';
 
 export default {
-  name: 'app',
+  name: 'Tasks',
+
   data () {
     return {
-        category: this.category,
-        completed: false,
-        name: this.name,
-        uid: ""
+        'category': "",
+        'completed': false,
+        'name': "",
+        'uid': "",
+        tasksCollection: []
     }
   },
-  methods: {
-    addTodo() {
-        db.collection("tasks").add({
-            category: this.category,
-            completed: false,
-            name: this.name,
-            uid: ""
-        })
-    //   todosCollection.add({
-    //     category: this.category,
-    //     completed: false,
-    //     name: this.name,
-    //     uid: ""
-    //   })
-    //   .then(function(docRef) {
-    //     console.log("Document written with ID: ", docRef.id);
-    //   })
-    //   .catch(function(error) {
-    //     console.error("Error adding document: ", error);
-    //   });
-    //   this.name = '';
+
+    mounted() {
+        const database = this.$firebase.firestore();
+        database
+        .collection('tasks')
+        .get()
+        .then(snap => {
+            const tasksCollection = [];
+            snap.forEach(doc => {
+            tasksCollection.push({ [doc.id]: doc.data() });
+            });
+            this.tasksCollection = tasksCollection;
+        });
+     },
+    methods: {
+        addTodo() {
+            db.collection("tasks").add({
+                'category': this.category,
+                'completed': false,
+                'name': this.name,
+                'uid': "9mr9bcUSGmdBCnt3AaQmtHlcFWb2"
+            })
+            .then(function(docRef) {
+            console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
+            });
+        }
     }
-  }
 }
 </script>
 

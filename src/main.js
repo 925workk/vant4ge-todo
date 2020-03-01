@@ -10,6 +10,7 @@ require ("firebase/firestore")
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false
 
+
 const firebaseConfig = {
   apiKey: "AIzaSyA1hYsvsVPiXaKvhQiZw9Cv8NZpAkpQOq4",
     authDomain: "van4ge.firebaseapp.com",
@@ -22,7 +23,8 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
+  Vue.prototype.$firebase = firebase;
+  const db=firebase.firestore();
   let app;
 
   firebase.auth().onAuthStateChanged(user=>{
@@ -48,7 +50,4 @@ firebase.initializeApp(firebaseConfig);
 
 });
 
-const fb= firebase.initializeApp(firebaseConfig)
-const db=firebase.firestore();
-
-export {fb,db}
+export {db}
