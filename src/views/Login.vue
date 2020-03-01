@@ -33,7 +33,7 @@ export default {
             try{
                 const val = await firebase.auth().signInWithEmailAndPassword(this.email, this.password)
                 console.log(val)
-                this.$router.replace({name: "secret"})
+                this.$router.replace({name: "todoapp"})
             } catch(err){
                 console.log(err)
             }
