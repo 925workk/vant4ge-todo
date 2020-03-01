@@ -23,8 +23,9 @@
         <div>
             <ul>
                 <li v-for="item in tasksCollection" :key="item.key">
-                    <p>{{item}}</p>
-                    <button @click="removeTodo()">Remove</button>
+                    <p>Todo: {{item.name}}</p>
+                    <small>Category: {{item.category}}</small><br/>
+                    <button @click="removeTodo(item.name)">Remove</button>
                     <button @click="editTodo()">Edit</button>
                 </li>
             </ul>
@@ -49,6 +50,10 @@ export default {
   },
 
     mounted() {
+        this.grabTodos()
+     },
+    methods: {
+        grabTodos(){
         const database = this.$firebase.firestore();
         database
         .collection('tasks')
@@ -56,12 +61,11 @@ export default {
         .then(snap => {
             const tasksCollection = [];
             snap.forEach(doc => {
-            tasksCollection.push({ [doc.id]: doc.data() });
+            tasksCollection.push(doc.data());
             });
             this.tasksCollection = tasksCollection;
         });
-     },
-    methods: {
+        },
         addTodo() {
             db.collection("tasks").add({
                 'category': this.category,
@@ -75,14 +79,26 @@ export default {
             .catch(function(error) {
                 console.error("Error adding document: ", error);
             });
-            
+            this.grabTodos();
         },
-        removeTodo(){
-            
+        removeTodo(doc){
+            console.log(doc)
+            db.collection('tasks')
+            .where('name', '==', doc).get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    doc.ref.delete().then(this.grabTodos)
+                })
+            })
+            // db.collection("tasks").doc(doc).delete().then(function() {
+            //     console.log("Document successfully deleted!");
+            // }).catch(function(error) {
+            //     console.error("Error removing document: ", error);
+            // });
         },
         editTodo(){
-
-        }
+            
+        },
     }
 }
 </script>
