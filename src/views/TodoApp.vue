@@ -24,8 +24,8 @@
             <ul>
                 <li v-for="item in tasksCollection" :key="item.key">
                     <p>{{item}}</p>
-                    <button>Remove</button>
-                    <button>Edit</button>
+                    <button @click="removeTodo()">Remove</button>
+                    <button @click="editTodo()">Edit</button>
                 </li>
             </ul>
         </div>
@@ -75,6 +75,13 @@ export default {
             .catch(function(error) {
                 console.error("Error adding document: ", error);
             });
+            
+        },
+        removeTodo(){
+            
+        },
+        editTodo(){
+
         }
     }
 }
