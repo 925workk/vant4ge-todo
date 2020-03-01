@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="todoAppContainer">
+        <top-header></top-header>
         <div>
             <label>Add To-do: </label>
             <input type="text" v-model="name" /> 
@@ -34,6 +35,7 @@
 </template>
 
 <script>
+import TopHeader from "../components/Top-Header"
 import {db} from '../main';
 
 export default {
@@ -46,8 +48,12 @@ export default {
         'name': "",
         'uid': "",
         tasksCollection: []
-    }
-  },
+        }
+    },
+
+    components:{
+        'top-header': TopHeader
+    },
 
     mounted() {
         this.grabTodos()

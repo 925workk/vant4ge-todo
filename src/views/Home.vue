@@ -9,10 +9,10 @@
           <div class="col-md-4">
             <img src="../../public/images/logo.png" alt="logo" style="width: 110px;" class="mb-4">
             <br/>
-            <h1>Alex's To Do</h1>
+            <h1>Vant4ge's Epic To Do App</h1>
             <img src="../../public/images/welcome-center.png" alt="man" style="height: 160px;" class="both mb-4">
             <br/>
-            <h4 class="mb-5">To do lists provide you clarity and focus. </h4>
+            <h4 class="mb-5">To do lists provide your team clarity and focus. </h4>
             <a href="/todoapp"><button type="button" class="btn btn-primary btn-lg mb-5">Get Started</button></a>
             <br />
             <router-link to="/login">Login</router-link>
