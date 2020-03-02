@@ -39,11 +39,12 @@
                     <p class="d-inline texts" :class="{completed:item.completed}"><strong>Task: </strong> {{item.name}}</p>
                     <p class="d-inline texts" :class="{completed:item.completed}"><strong>Category: </strong> {{item.category}}</p>
                     <!-- <p class="d-inline texts"><strong>Completed: </strong> {{item.completed}}</p> -->
-                    <i @click="editTodo()" class="fas fa-edit ml-4 mr-4"></i>
+                    <i @click="editTodo(item.name)" class="fas fa-edit ml-4 mr-4"></i>
                     <i @click="removeTodo(item.name)" class="fas fa-trash-alt"></i>
                 </h5>
             <!-- </ul> -->
         </div>
+
     </div>
 </template>
 
