@@ -1,24 +1,23 @@
-# vant4ge
 
-## Project setup
-```
-npm install
-```
+---
+### VUE TO DO APP
+A to do list website where one can log in, register, and add tasks to do. Once a task is added, users are able to mark them as completed, as well as remove them. Clone the repo and run "npm install" followeed by "npm run serve."
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+---
+### Project Goals
+* Learn and build a webapp using 2 new technologies, Vue & Firestore.
+* Create user authentication.
+* Use firestore as a backend.
+* Practice implementing CRUD.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+---
+### Technology Used
+* HTML | CSS | Javascript
+* Vue
+* Bootstrap
+* Firebase/Firestore
 
-### Lints and fixes files
-```
-npm run lint
-```
+---
+### © 2019 Built By
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Alexander Pham | [GitHub](https://github.com/925work) |  [LinkedIn](https://www.linkedin.com/in/alexanderpham626/)
