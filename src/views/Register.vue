@@ -28,7 +28,8 @@ export default {
             try{
                 const user = firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
                 console.log(user)
-                this.$router.replace({name: "secret"})
+                alert("Account creation successful! Redirecting you to the log in screen...")
+                this.$router.replace({name: "login"})
             } catch(err){
                 console.log(err)
             }     
@@ -68,7 +69,6 @@ export default {
         button {
         width: 40%;
         height: 60px;
-        font-size: 100%;
         font-size: 20px;
     }
 </style>

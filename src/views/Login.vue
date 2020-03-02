@@ -68,7 +68,6 @@ export default {
         button {
         width: 40%;
         height: 60px;
-        font-size: 100%;
         font-size: 20px;
     }
 </style>

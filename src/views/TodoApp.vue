@@ -2,34 +2,47 @@
     <div class="todoAppContainer">
         <top-header></top-header>
         <div>
-            <label>Add To-do: </label>
-            <input type="text" v-model="name" /> 
+            <div class="addTodoLabel mt-4">
+                <h3 class="d-inline">Add a To-do: </h3>
+                <input type="text" v-model="name" class="addBox"/> 
+            </div>
             <br />
-            <label>Select a Category: </label>
+            <h4 class="categoryLabel">Select a Category: </h4>
             <br />
-            <input type="radio" id="Books To Read" v-model="category" value="Books To Read">
-            <label for="Books To Read">Books To Read</label>
-            <br />
-            <input type="radio" id="Self Improvement" v-model="category" value="Self Improvement">
-            <label for="Self Improvement">Self Improvement</label>
-            <br />
-            <input type="radio" id="Grocery" v-model="category" value="Grocery">
-            <label for="Grocery">Grocery</label>
-            <br />
-            <input type="radio" id="Home Repair" v-model="category" value="Home Repair">
-            <label for="Home Repair">Home Repair</label>
-            <br />
-            <button @click="addTodo()">Add Task</button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <input type="radio" id="Books To Read" v-model="category" value="Books To Read">
+                        <label for="Books To Read">Books To Read</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="radio" id="Self Improvement" v-model="category" value="Self Improvement">
+                        <label for="Self Improvement">Self Improvement</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="radio" id="Grocery" v-model="category" value="Grocery">
+                        <label for="Grocery">Grocery</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="radio" id="Home Repair" v-model="category" value="Home Repair">
+                        <label for="Home Repair">Home Repair</label>
+                    </div>
+                </div>
+            </div>
+            <button @click="addTodo()" class="btn btn-primary mb-5 addButton mt-3">Add Task</button>
         </div>
-        <div>
-            <ul>
-                <li v-for="item in tasksCollection" :key="item.key">
-                    <p>Todo: {{item.name}}</p>
-                    <small>Category: {{item.category}}</small><br/>
-                    <button @click="removeTodo(item.name)">Remove</button>
-                    <button @click="editTodo()">Edit</button>
-                </li>
-            </ul>
+        <h2 class="mb-3 m-3">Task List</h2>
+        <div class="container">
+            <!-- <ul> -->
+                <h5 v-for="item in tasksCollection" :key="item.key" class="taskContainer">
+                    <button @click="checkCompleted(item.name)" class="btn btn-outline-primary" :class="{completed:item.completed}">Mark Completed</button>
+                    <p class="d-inline texts" :class="{completed:item.completed}"><strong>Task: </strong> {{item.name}}</p>
+                    <p class="d-inline texts" :class="{completed:item.completed}"><strong>Category: </strong> {{item.category}}</p>
+                    <!-- <p class="d-inline texts"><strong>Completed: </strong> {{item.completed}}</p> -->
+                    <i @click="editTodo()" class="fas fa-edit ml-4 mr-4"></i>
+                    <i @click="removeTodo(item.name)" class="fas fa-trash-alt"></i>
+                </h5>
+            <!-- </ul> -->
         </div>
     </div>
 </template>
@@ -85,6 +98,7 @@ export default {
             .catch(function(error) {
                 console.error("Error adding document: ", error);
             });
+            this.name=''
             this.grabTodos();
         },
         removeTodo(doc){
@@ -105,10 +119,84 @@ export default {
         editTodo(){
             
         },
+        checkCompleted(doc){
+            console.log(doc)
+            db.collection('tasks')
+            .where('name', '==', doc).get()
+            .then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    doc.ref.update({
+                        completed: true
+                    }).then(this.grabTodos)
+                })
+            })
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+.todoAppContainer{
+    width: 100%;
+    background-image: url("../../public/images/nice_snow.png");
+    background-repeat: repeat;
+    min-height: 100vh;
+}
 
+label{
+    font-size: 16px;
+    position: relative;
+    left: 8px;
+    top: 2px;
+    font-weight: bold;
+}
+
+.categoryLabel{
+    position: relative;
+    top: 20px;
+}
+
+.addTodoLabel{
+    position: relative;
+    top: 25px;
+}
+
+.addButton{
+    width: 40%;
+    height: 40px;
+    font-size: 20px;
+}
+
+.addBox{
+    height: 40px;
+    width: 40%;
+    border: black solid 1px;
+}
+.completed{
+    text-decoration: line-through;
+    color: gray;
+    border: gray;
+}
+.completed:hover{
+    background-color: transparent;
+    cursor:default;
+}
+
+.texts{
+    position: relative;
+    top: 8px;
+}
+
+i{
+    color: #007bff;
+}
+
+.taskContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid lightgray;
+    padding-top: 14px;
+    margin-bottom: 14px;
+}
 </style>

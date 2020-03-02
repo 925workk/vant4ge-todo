@@ -4,8 +4,8 @@
             <a href="/" class="mx-auto nav-item">Home</a>
             <div class="status mx-auto nav-item">
                 <p class="d-inline">You are..  </p>
-                <p v-if="loggedIn" class="d-inline">Logged in!</p>
-                <p v-else class="d-inline">Logged out!</p>
+                <p v-if="loggedIn" class="d-inline">LOGGED IN!</p>
+                <p v-else class="d-inline">LOGGED OUT!</p>
             </div>
             <div class="mx-auto nav-item">
                 <a @click="signOut">Sign Out</a>
