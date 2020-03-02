@@ -192,6 +192,10 @@ i{
     color: #007bff;
 }
 
+i:hover{
+    cursor: pointer;
+}
+
 .taskContainer{
     display: flex;
     align-items: center;
