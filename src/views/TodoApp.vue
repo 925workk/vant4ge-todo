@@ -2,36 +2,27 @@
     <div class="todoAppContainer">
         <top-header></top-header>
         <div>
-            <div class="addTodoLabel mt-4">
-                <h3 class="d-inline">Add a To-do: </h3>
-                <input type="text" v-model="name" class="addBox"/> 
-            </div>
-            <br />
-            <h4 class="categoryLabel">Select a Category: </h4>
-            <br />
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">
-                        <input type="radio" id="Books To Read" v-model="category" value="Books To Read">
-                        <label for="Books To Read">Books To Read</label>
+                    <div class="addTodoLabel mt-5 col-md-12">
+                        <h3 class="d-inline">Add a To-do: </h3>
+                        <input type="text" v-model="name" class="addBox"/> 
                     </div>
-                    <div class="col-md-3">
-                        <input type="radio" id="Self Improvement" v-model="category" value="Self Improvement">
-                        <label for="Self Improvement">Self Improvement</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="radio" id="Grocery" v-model="category" value="Grocery">
-                        <label for="Grocery">Grocery</label>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="radio" id="Home Repair" v-model="category" value="Home Repair">
-                        <label for="Home Repair">Home Repair</label>
+                    <div class="col-md-12 mt-3 mb-5">
+                        <h4 class="categoryLabel d-inline">Select a Category: </h4>
+                            <select v-model="category" class="mt-2">
+                                <option disabled value="">Select option</option>
+                                <option value="Books To Read">Books To Read</option>
+                                <option value="Self Improvement">Self Improvement</option>
+                                <option value="Grocery">Grocery</option>
+                                <option value="Home Repair">Home Repair</option>
+                            </select>
+                        <button @click="addTodo()" class="btn btn-primary addButton mt-2 ml-2">Add Task</button>
                     </div>
                 </div>
             </div>
-            <button @click="addTodo()" class="btn btn-primary mb-5 addButton mt-3">Add Task</button>
         </div>
-        <h2 class="mb-3 m-3">Task List</h2>
+        <h2 class="mb-3 mt-5">Task List</h2>
         <div class="container">
             <!-- <ul> -->
                 <h5 v-for="item in tasksCollection" :key="item.key" class="taskContainer">
@@ -227,14 +218,22 @@ label{
 
 
 .addButton{
-    width: 40%;
-    height: 40px;
-    font-size: 20px;
+    width: 80px;
+    height: 32px;
+    position: relative;
+    top: 15px;
+    font-size: 12px;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none !important;
+   background-color: transparent !important;
 }
 
 .addBox{
-    height: 40px;
-    width: 40%;
+    height: 36px;
+    width: 45%;
     border: black solid 1px;
 }
 .completed{
@@ -258,6 +257,12 @@ i{
     color: #007bff;
     position: relative;
     top:9px;
+}
+
+select{
+    position: relative;
+    top:20px;
+    height: 32px;
 }
 
 i:hover{
