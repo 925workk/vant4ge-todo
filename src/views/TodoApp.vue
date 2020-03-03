@@ -5,12 +5,12 @@
             <div class="container">
                 <div class="row">
                     <div class="addTodoLabel mt-5 col-md-12">
-                        <h3 class="d-inline">Add a To-do: </h3>
-                        <input type="text" v-model="name" class="addBox"/> 
+                        <h3 class="d-inline mr-2">Add a To-do: </h3>
+                        <input type="text" v-model="name" class="addBox" placeholder="To-do item"/> 
                     </div>
                     <div class="col-md-12 mt-3 mb-5">
-                        <h4 class="categoryLabel d-inline">Select a Category: </h4>
-                            <select v-model="category" class="mt-2">
+                        <h4 class="categoryLabel d-inline mr-2">Select a Category: </h4>
+                            <select v-model="category" class="mt-2 selector">
                                 <option disabled value="">Select option</option>
                                 <option value="Books To Read">Books To Read</option>
                                 <option value="Self Improvement">Self Improvement</option>
@@ -46,39 +46,38 @@
                     </div>
                     <b-modal :id="item.name" hide-footer>
                         <template v-slot:modal-title class="text-center">
-                            ITEM EDITING: <p>{{item.name}}</p>
-                        </template>
-                        <div class="d-block text-center">
-                            <div class="TodoLabel mt-4">
-                                <h3 class="d-inline">Change Task to: </h3>
-                                <input type="text" v-model="nameEdit" class="addBox">
+                            <div class="container">
+                                <img src="../../public/images/logo.png" alt="logo" style="width: 30px;" class="d-inline">
+                                <h4 class="d-inline modalTitle ml-3">Editing Task: {{item.name}}</h4>
                             </div>
-                            <br />
-                            <h4 class="categoryLabel">Select a Category: </h4>
-                            <br />
+                        </template>
+                        <div class="d-block">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <input type="radio" id="Books To Read" v-model="categoryEdit" value="Books To Read">
-                                        <label for="Books To Read">Books To Read</label>
+                                    <div class="col-md-12 mt-4">
+                                        <p class="d-inline editLabel"><strong>Change Task to:</strong> </p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <input type="radio" id="Self Improvement" v-model="categoryEdit" value="Self Improvement">
-                                        <label for="Self Improvement">Self Improvement</label>
+                                    <div class="col-md-12 mb-4">
+                                        <input type="text" v-model="nameEdit" class="editBox" placeholder="Updated to-do item">
                                     </div>
-                                    <div class="col-md-6">
-                                        <input type="radio" id="Grocery" v-model="categoryEdit" value="Grocery">
-                                        <label for="Grocery">Grocery</label>
+                                    <div class="col-md-12">
+                                        <p class="editCategoryLabel"><strong>Select a Category:</strong></p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <input type="radio" id="Home Repair" v-model="categoryEdit" value="Home Repair">
-                                        <label for="Home Repair">Home Repair</label>
+                                    <div class="col-md-12 mb-4">
+                                        <select v-model="categoryEdit" class="editSelector">
+                                            <option disabled value="">Select option</option>
+                                            <option value="Books To Read">Books To Read</option>
+                                            <option value="Self Improvement">Self Improvement</option>
+                                            <option value="Grocery">Grocery</option>
+                                            <option value="Home Repair">Home Repair</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <b-button class="mt-3" block @click="$bvModal.hide(item.name)">Close</b-button>
-                        <b-button class="mt-3" variant="primary" block @click="editTodo(item.name), $bvModal.hide(item.name)">Save Changes</b-button>
+                        <div class="container">
+                            <b-button class="mt-3 mb-4" variant="primary" @click="editTodo(item.name), $bvModal.hide(item.name)">Save Changes</b-button>
+                        </div>
                     </b-modal>
                 </h5>
             <!-- </ul> -->
@@ -155,11 +154,6 @@ export default {
                     doc.ref.delete().then(this.grabTodos)
                 })
             })
-            // db.collection("tasks").doc(doc).delete().then(function() {
-            //     console.log("Document successfully deleted!");
-            // }).catch(function(error) {
-            //     console.error("Error removing document: ", error);
-            // });
         },
         editTodo(doc){
             console.log(doc)
@@ -191,6 +185,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+input{
+    padding-left: 7px;
+}
 .todoAppContainer{
     width: 100%;
     background-image: url("../../public/images/nice_snow.png");
@@ -235,11 +233,17 @@ label{
     height: 36px;
     width: 45%;
     border: black solid 1px;
+    position: relative;
+    bottom: 3px;
 }
 .completed{
     text-decoration: line-through;
     color: gray;
     border: gray;
+}
+.modalTitle{
+    position: relative;
+    top:3px;
 }
 .completed:hover{
     background-color: transparent;
@@ -259,15 +263,17 @@ i{
     top:9px;
 }
 
-select{
+.selector{
     position: relative;
     top:20px;
     height: 32px;
+    border: rgb(57, 57, 57) solid 1px;
+    background-color: white;
 }
 
 i:hover{
     cursor: pointer;
-    color: #007bff;
+    color: #0151a5;
 }
 
 .taskContainer{
@@ -277,5 +283,25 @@ i:hover{
     border-top: 1px solid lightgray;
     padding-top: 14px;
     margin-bottom: 14px;
+}
+
+.editSelector{
+    width: 100%;
+    height: 40px;
+    border: rgb(57, 57, 57) solid 1px;
+    background-color: white;
+    border-radius: 0px;
+}
+
+.editBox{
+    width: 100%;
+    height: 40px;
+    border: rgb(57, 57, 57) solid 1px;
+    background-color: white;
+}
+
+.editCategoryLabel{
+    position: relative;
+    top:16px;
 }
 </style>
