@@ -52,6 +52,7 @@
 import TopHeader from "../components/Top-Header"
 import {db} from '../main';
 
+
 export default {
   name: 'Tasks',
 
@@ -61,7 +62,8 @@ export default {
         'completed': false,
         'name': "",
         'uid': "",
-        tasksCollection: []
+        tasksCollection: [],
+        userID: []
         }
     },
 
@@ -71,6 +73,7 @@ export default {
 
     mounted() {
         this.grabTodos()
+        console.log("user id: " + this.$firebase.auth().currentUser.uid);
      },
     methods: {
         grabTodos(){
@@ -91,7 +94,7 @@ export default {
                 'category': this.category,
                 'completed': false,
                 'name': this.name,
-                'uid': "9mr9bcUSGmdBCnt3AaQmtHlcFWb2"
+                'uid': this.$firebase.auth().currentUser.uid
             })
             .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
