@@ -39,13 +39,50 @@
                     <p class="d-inline texts" :class="{completed:item.completed}"><strong>Task: </strong> {{item.name}}</p>
                     <p class="d-inline texts" :class="{completed:item.completed}"><strong>Category: </strong> {{item.category}}</p>
                     <!-- <p class="d-inline texts"><strong>Completed: </strong> {{item.completed}}</p> -->
-                    <i @click="$bvModal.show('bv-modal-example')" class="fas fa-edit ml-4 mr-4"></i>
+                    <i @click="$bvModal.show(item.name)" class="fas fa-edit ml-4 mr-4"></i>
                     <i @click="removeTodo(item.name)" class="fas fa-trash-alt"></i>
+
+                    <b-modal :id="item.name" hide-footer>
+                        <template v-slot:modal-title class="text-center">
+                            ITEM EDITING: <p>{{item.name}}</p>
+                        </template>
+                        <div class="d-block text-center">
+                            <div class="TodoLabel mt-4">
+                                <h3 class="d-inline">Change Task to: </h3>
+                                <input type="text" v-model="nameEdit" class="addBox">
+                            </div>
+                            <br />
+                            <h4 class="categoryLabel">Select a Category: </h4>
+                            <br />
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="radio" id="Books To Read" v-model="categoryEdit" value="Books To Read">
+                                        <label for="Books To Read">Books To Read</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="radio" id="Self Improvement" v-model="categoryEdit" value="Self Improvement">
+                                        <label for="Self Improvement">Self Improvement</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="radio" id="Grocery" v-model="categoryEdit" value="Grocery">
+                                        <label for="Grocery">Grocery</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="radio" id="Home Repair" v-model="categoryEdit" value="Home Repair">
+                                        <label for="Home Repair">Home Repair</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <b-button class="mt-3" block @click="$bvModal.hide(item.name)">Close</b-button>
+                        <b-button class="mt-3" variant="primary" block @click="editTodo(item.name), $bvModal.hide(item.name)">Save Changes</b-button>
+                    </b-modal>
                 </h5>
             <!-- </ul> -->
         </div>
 
-        <b-modal id="bv-modal-example" hide-footer>
+        <!-- <b-modal id="bv-modal-example" hide-footer>
             <template v-slot:modal-title class="text-center">
                 To-do Editor
             </template>
@@ -80,7 +117,7 @@
             </div>
             <b-button class="mt-3" block @click="$bvModal.hide('bv-modal-example')">Close</b-button>
             <b-button class="mt-3" variant="primary" block @click="editTodo(item.name), $bvModal.hide('bv-modal-example')">Save Changes</b-button>
-        </b-modal>
+        </b-modal> -->
 
     </div>
 </template>
