@@ -12,6 +12,10 @@
 
 
 <script>
+import Vue from 'vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 // import TopHeader from "./components/Top-Header";
 
 export default {

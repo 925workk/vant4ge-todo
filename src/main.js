@@ -5,6 +5,7 @@ import store from './store'
 import axios from 'axios';
 import firebase from 'firebase'
 import 'firebase/firestore'
+import './plugins/bootstrap-vue'
 require ("firebase/firestore")
 
 Vue.prototype.$axios = axios;
