@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="addTodoLabel mt-5 col-md-12">
                         <h3 class="d-inline mr-2">Add a To-do: </h3>
-                        <input type="text" v-model="name" class="addBox" placeholder="To-do item"/> 
+                        <input type="text" v-model="name" class="addBox" placeholder="To-do item" maxlength = "50"/> 
                     </div>
                     <div class="col-md-12 mt-3 mb-5">
                         <h4 class="categoryLabel d-inline mr-2">Select a Category: </h4>
@@ -56,7 +56,7 @@
                                         <p class="d-inline editLabel"><strong>Change Task to:</strong> </p>
                                     </div>
                                     <div class="col-md-12 mb-4">
-                                        <input type="text" v-model="nameEdit" class="editBox" placeholder="Updated to-do item">
+                                        <input type="text" v-model="nameEdit" class="editBox" placeholder="Updated to-do item" maxlength = "50">
                                     </div>
                                     <div class="col-md-12">
                                         <p class="editCategoryLabel"><strong>Select a Category:</strong></p>

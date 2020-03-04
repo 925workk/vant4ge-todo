@@ -13,11 +13,11 @@
                 <form @submit.prevent="pressed">
                     <div class="email">
                         <p class="header">Email Address:</p>
-                        <input type="email" v-model="email" placeholder="email">
+                        <input type="email" v-model="email" placeholder="email" maxlength = "50">
                     </div>
                     <div class="password">
                         <p class="header">Password:</p>
-                        <input type="password" v-model="password" placeholder="password">
+                        <input type="password" v-model="password" placeholder="password" maxlength = "50">
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg mb-4 mt-4">Register</button>
                 </form>
