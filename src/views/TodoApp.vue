@@ -117,6 +117,7 @@ export default {
         const database = this.$firebase.firestore();
         database
         .collection('tasks')
+        .where('uid', '==', this.$firebase.auth().currentUser.uid)
         .get()
         .then(snap => {
             const tasksCollection = [];

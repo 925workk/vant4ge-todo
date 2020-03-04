@@ -49,6 +49,7 @@ export default {
 
 nav{
     font-family: 'Oswald', sans-serif;
+    border-bottom: 1px solid rgb(103, 103, 103);
 }
 .status {
     color:azure;
