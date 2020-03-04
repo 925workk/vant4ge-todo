@@ -3,23 +3,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <a href="/" class="mx-auto nav-item">Home</a>
             <div class="status mx-auto nav-item">
-                <p class="d-inline">You are..  </p>
-                <p v-if="loggedIn" class="d-inline">LOGGED IN!</p>
-                <p v-else class="d-inline">LOGGED OUT!</p>
             </div>
             <div class="mx-auto nav-item">
                 <a @click="signOut">Sign Out</a>
             </div>
-            <!-- 
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a> -->
     </nav>
-      <!-- You are 
-      <span v-if="loggedIn">Logged in!</span>
-      <span v-else>Logged out!</span>
-      <div>
-          <button @click="signOut">Sign Out</button>
-      </div> -->
   </div>
 </template>
 
@@ -58,6 +46,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+nav{
+    font-family: 'Oswald', sans-serif;
+}
 .status {
     color:azure;
     font-size: 14px;

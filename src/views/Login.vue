@@ -11,14 +11,14 @@
                 <hr/>
                 <form @submit.prevent="pressed">
                     <div class="login">
-                        <p>Email Address:</p>
+                        <p class="header">Email Address:</p>
                         <input type="email" placeholder="email" v-model="email">
                     </div>
                     <div class="password">
-                        <p>Password:</p>
+                        <p class="header">Password:</p>
                         <input  type="password" v-model="password" placeholder="password">
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg mb-5 mt-4">Log In</button>
+                    <button type="submit" class="btn btn-primary btn-lg mb-4 mt-4">Log In</button>
                 </form>
                 <div class="error" v-if="error">{{error.message}}</div>
                 <span>Need an account? Click here to <router-link to="/register">register</router-link></span>
@@ -83,11 +83,15 @@ export default {
     }
 
     .loginContainer{
-        min-height: 650px;
+        min-height: 685px;
         width: 100vw;
         height: 100vh;
         background-image: url("../../public/images/dark_snow.png");
         background-repeat: repeat;
+        font-family: 'Merriweather', serif;
+    }
+    h2{
+        font-family: 'Oswald', sans-serif;
     }
     .error {
         color: red;
@@ -97,10 +101,10 @@ export default {
         width: 80%;
         padding: 5px;
         margin: 0px;
-        font-size: 21px;
+        font-size: 20px;
         border: 1px black solid;
     }
-        button {
+    button {
         width: 40%;
         height: 40px;
         font-size: 15px;
@@ -116,6 +120,10 @@ export default {
         text-decoration: underline;
     }
 
+    .header{
+        font-family: 'Oswald', sans-serif;
+        font-size: 20px;
+    }
 
     h6{
         position: relative;

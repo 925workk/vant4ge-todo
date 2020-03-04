@@ -35,11 +35,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  h1{
+    font-family: 'Oswald', sans-serif;
+  }
+
   .homePageContainer{
     width: 100%;
     background-image: url("../../public/images/nice_snow.png");
     background-repeat: repeat;
     height: 100vh;
+    font-family: 'Merriweather', serif;
   }
   .homePageContents{
     margin: 0;

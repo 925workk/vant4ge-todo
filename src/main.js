@@ -22,7 +22,7 @@ const firebaseConfig = {
   appId: "1:554180825237:web:22159c4bbaecb08d890b9c",
   measurementId: "G-7W74R6Q3RD"
 };
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
   Vue.prototype.$firebase = firebase;
   const db=firebase.firestore();

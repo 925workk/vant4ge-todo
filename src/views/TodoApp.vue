@@ -24,7 +24,6 @@
         </div>
         <h2 class="mb-3 mt-5">Task List</h2>
         <div class="container">
-            <!-- <ul> -->
                 <h5 v-for="item in tasksCollection" :key="item.key" class="taskContainer">
                     <div class="container">
                         <div class="row text-center">
@@ -36,7 +35,6 @@
                             </div>
                             <div class="col-md-3 mb-2">
                                 <small class="d-inline texts" :class="{completed:item.completed}">Category: {{item.category}}</small>
-                                <!-- <p class="d-inline texts"><strong>Completed: </strong> {{item.completed}}</p> -->
                             </div>
                             <div class="col-md-3">
                                 <i @click="$bvModal.show(item.name)" class="fas fa-edit mr-4" :class="{completed:item.completed}"></i>
@@ -80,7 +78,6 @@
                         </div>
                     </b-modal>
                 </h5>
-            <!-- </ul> -->
         </div>
 
     </div>
@@ -194,6 +191,7 @@ input{
     background-image: url("../../public/images/nice_snow.png");
     background-repeat: repeat;
     min-height: 100vh;
+    font-family: 'Merriweather', serif;
 }
 
 label{
@@ -216,7 +214,7 @@ label{
 
 
 .addButton{
-    width: 80px;
+    width: 90px;
     height: 32px;
     position: relative;
     top: 15px;
@@ -303,5 +301,17 @@ i:hover{
 .editCategoryLabel{
     position: relative;
     top:16px;
+}
+
+h3{
+    font-family: 'Oswald', sans-serif;
+}
+
+h4{
+    font-family: 'Oswald', sans-serif;
+}
+
+h2{
+    font-family: 'Oswald', sans-serif;
 }
 </style>

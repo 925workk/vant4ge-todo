@@ -1,11 +1,5 @@
 <template>
   <div id="app">
-    <!-- <top-header></top-header>
-    <div id="nav">
-      <router-link to="/login">Login</router-link>|
-      <router-link to="/todoapp">TodoApp</router-link>|
-      <router-link to="/register">Register</router-link>
-    </div> -->
     <router-view/>
   </div>
 </template>
@@ -16,12 +10,9 @@ import Vue from 'vue'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-// import TopHeader from "./components/Top-Header";
 
 export default {
-  // components:{
-  //   'top-header': TopHeader
-  // }
+
 }
 </script>
 
