@@ -22,19 +22,48 @@
                 </div>
             </div>
         </div>
+
         <h2 class="mb-3 mt-5">Task List</h2>
+
+        <div class="container filterSection mt-3 mb-3">
+            <div class="row">
+                <div class="col-md-6 mt-1">
+                    <h4 class="d-inline">Category Filter: </h4>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        All Categories
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="#">Books To Read</a>
+                        <a class="dropdown-item" href="#">Self Improvement</a>
+                        <a class="dropdown-item" href="#">Grocery</a>
+                        <a class="dropdown-item" href="#">Home Repair</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-1">
+                    <h4 class="d-inline">Completed: </h4>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-outline-primary">All</button>
+                        <button type="button" class="btn btn-outline-primary">In Progress</button>
+                        <button type="button" class="btn btn-outline-primary">Done</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
                 <h5 v-for="item in tasksCollection" :key="item.key" class="taskContainer">
                     <div class="container">
                         <div class="row text-center">
                             <div class="col-md-3">
-                                <button @click="checkCompleted(item.name)" class="btn btn-outline-primary" :class="{completed:item.completed}">Mark Completed</button>
-                            </div>
-                            <div class="col-md-3 mb-2">
                                 <p class="d-inline texts" :class="{completed:item.completed}"><strong> {{item.name}}</strong></p>
                             </div>
                             <div class="col-md-3 mb-2">
                                 <small class="d-inline texts" :class="{completed:item.completed}">Category: {{item.category}}</small>
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <button @click="checkCompleted(item.name)" class="btn btn-outline-dark btn-sm markButton" :class="{completed:item.completed}">Mark Completed</button>
                             </div>
                             <div class="col-md-3">
                                 <i @click="$bvModal.show(item.name)" class="fas fa-edit mr-4" :class="{completed:item.completed}"></i>
@@ -118,6 +147,7 @@ export default {
         database
         .collection('tasks')
         .where('uid', '==', this.$firebase.auth().currentUser.uid)
+        // .where('category', '==', 'Home Repair')
         .get()
         .then(snap => {
             const tasksCollection = [];
@@ -222,7 +252,7 @@ label{
     font-size: 12px;
 }
 
-.btn:focus,.btn:active {
+.completed:focus,.completed:active {
    outline: none !important;
    box-shadow: none !important;
    background-color: transparent !important;
@@ -314,5 +344,15 @@ h4{
 
 h2{
     font-family: 'Oswald', sans-serif;
+}
+
+.btn-group{
+    position: relative;
+    bottom: 4px;
+}
+
+.markButton{
+    position: relative;
+    top: 7px;
 }
 </style>
