@@ -31,7 +31,7 @@
                     <h4 class="d-inline">Category Filter: </h4>
                     <div class="btn-group btn-group-sm" role="group">
                         <button id="btnGroupDrop1" type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        All Categories
+                        Home Repair
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             <router-link to="/todoapp" class="dropdown-item">All Categories</router-link>
@@ -39,10 +39,6 @@
                             <router-link to="/selfimprovement" class="dropdown-item">Self Improvement</router-link>
                             <router-link to="/grocery" class="dropdown-item">Grocery</router-link>
                             <router-link to="/homerepair" class="dropdown-item">Home Repair</router-link>
-                        <!-- <button class="dropdown-item">Books To Read</button>
-                        <button class="dropdown-item">Self Improvement</button>
-                        <button class="dropdown-item">Grocery</button>
-                        <button class="dropdown-item">Home Repair</button> -->
                         </div>
                     </div>
                 </div>
@@ -153,6 +149,7 @@ export default {
         database
         .collection('tasks')
         .where('uid', '==', this.$firebase.auth().currentUser.uid)
+        .where('category', '==', 'Home Repair')
         // .where('category', '==', 'Home Repair')
         .get()
         .then(snap => {
@@ -169,6 +166,7 @@ export default {
         .collection('tasks')
         .where('uid', '==', this.$firebase.auth().currentUser.uid)
         .where('completed', '==', false)
+        .where('category', '==', 'Home Repair')
         .get()
         .then(snap => {
             const tasksCollection = [];
@@ -184,6 +182,7 @@ export default {
         .collection('tasks')
         .where('uid', '==', this.$firebase.auth().currentUser.uid)
         .where('completed', '==', true)
+        .where('category', '==', 'Home Repair')
         .get()
         .then(snap => {
             const tasksCollection = [];
