@@ -214,6 +214,11 @@ export default {
 
 <style lang="scss" scoped>
 
+html{
+    background-image: url("../../public/images/nice_snow.png");
+    background-repeat: repeat;
+}
+
 input{
     padding-left: 7px;
 }
@@ -311,7 +316,7 @@ i:hover{
     justify-content: space-between;
     border-top: 1px solid lightgray;
     padding-top: 14px;
-    margin-bottom: 14px;
+    padding-bottom: 14px;
 }
 
 .editSelector{
